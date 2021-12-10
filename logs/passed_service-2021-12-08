@@ -1,0 +1,26 @@
+[2021-12-08 09:33:12.691] INFO  [main][c.a.n.ApiServerMain.main:11]-START API Server
+[2021-12-08 09:33:12.696] INFO  [main][c.a.n.ApiServerContext.init:29]-Default encoding : UTF-8
+[2021-12-08 09:33:12.705] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_THREAD_COUNT] Value[10] Type[int]
+[2021-12-08 09:33:12.705] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_LISTEN_PORT] Value[9003] Type[int]
+[2021-12-08 09:33:12.705] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_READ_TIMEOUT_SEC] Value[5] Type[int]
+[2021-12-08 09:33:12.706] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_USE_FLAG] Value[false] Type[boolean]
+[2021-12-08 09:33:12.706] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_KEY_FILE_PATH] Value[./config/auth/req.key] Type[class java.lang.String]
+[2021-12-08 09:33:12.706] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_CERT_FILE_PATH] Value[./config/auth/signed-req.pem] Type[class java.lang.String]
+[2021-12-08 09:33:12.706] INFO  [main][c.a.n.ApiServerContext.initConfigFile:45]-API Server Config Load
+[2021-12-08 09:33:12.707] INFO  [main][c.a.n.ApiServerContext.initConfigFile:48]-Common Config Load
+[2021-12-08 09:33:13.009] INFO  [main][c.a.n.ApiServerContext.initDatabase:64]-Init DB Load
+[2021-12-08 09:33:13.012] INFO  [HttpTestParent][c.a.n.w.n.HttpServer.run:30]-START THREAD HttpTestParent
+[2021-12-08 09:33:13.151] INFO  [HttpTestParent][c.a.n.w.n.HttpServer.run:46]-Http Listen Port : 9003
+[2021-12-08 18:56:20.157] INFO  [main][c.a.n.ApiServerMain.main:11]-START API Server
+[2021-12-08 18:56:20.159] INFO  [main][c.a.n.ApiServerContext.init:29]-Default encoding : UTF-8
+[2021-12-08 18:56:20.166] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_THREAD_COUNT] Value[10] Type[int]
+[2021-12-08 18:56:20.166] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_LISTEN_PORT] Value[9003] Type[int]
+[2021-12-08 18:56:20.166] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[RECEIVER_READ_TIMEOUT_SEC] Value[5] Type[int]
+[2021-12-08 18:56:20.168] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_USE_FLAG] Value[false] Type[boolean]
+[2021-12-08 18:56:20.168] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_KEY_FILE_PATH] Value[./config/auth/req.key] Type[class java.lang.String]
+[2021-12-08 18:56:20.169] INFO  [main][c.a.n.u.ConfigLoadUtil.mappingClassFiled:94]-ConfigLoad -> Key[SSL_CERT_FILE_PATH] Value[./config/auth/signed-req.pem] Type[class java.lang.String]
+[2021-12-08 18:56:20.169] INFO  [main][c.a.n.ApiServerContext.initConfigFile:45]-API Server Config Load
+[2021-12-08 18:56:20.171] INFO  [main][c.a.n.ApiServerContext.initConfigFile:48]-Common Config Load
+[2021-12-08 18:56:20.561] INFO  [main][c.a.n.ApiServerContext.initDatabase:64]-Init DB Load
+[2021-12-08 18:56:20.569] INFO  [HttpTestParent][c.a.n.w.n.HttpServer.run:30]-START THREAD HttpTestParent
+[2021-12-08 18:56:20.816] INFO  [HttpTestParent][c.a.n.w.n.HttpServer.run:46]-Http Listen Port : 9003

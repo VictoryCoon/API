@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="defaultStatementTimeout" value="25"/>
+		<!-- 자동으로 카멜케이스 규칙으로 변환 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.alive.networks.db.vo.ApiInfoVo" alias="vo" />
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+				
+				<!-- OPTIONAL PROPERTIES BELOW -->
+				<property name="poolMaximumActiveConnections" value="10" />
+				<property name="poolMaximumIdleConnections" value="5" />
+				<property name="poolPingEnabled" value="true"/>
+				<property name="poolPingQuery" value="SELECT 1 FROM DUAL"/>
+				<property name="poolPingConnectionsNotUsedFor" value="15000"/>
+				<property name="poolTimeToWait" value="20000"/>
+				<property name="driver.encoding" value="UTF-8"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- Identify all SQL Mapper XML files to be loaded by this SQL map. Notice the paths are relative to the classpath. -->
+	<mappers>
+	 		<mapper resource="./db-mapper/sql/ApiMapper.xml"/>
+	</mappers>
+
+</configuration>

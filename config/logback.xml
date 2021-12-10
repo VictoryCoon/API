@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback [
+<!ENTITY LOG_HOME "../API/logs">
+<!ENTITY LOG_LEVEL "INFO">
+]>
+
+<configuration debug="true" scan="true" scanPeriod="5 seconds">
+	<appender name="queue" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>&LOG_HOME;/current_queue.log</File>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p [%t][%C{1}.%M:%L]-%m%n</pattern>
+		    <ImmediateFlush>true</ImmediateFlush>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>&LOG_HOME;/passed_queue-%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>1</maxHistory> <!-- File Save Date -->
+		</rollingPolicy>
+	</appender>
+	<appender name="service" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>&LOG_HOME;/current_service.log</File>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p [%t][%C{1}.%M:%L]-%m%n</pattern>
+		    <ImmediateFlush>true</ImmediateFlush>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>&LOG_HOME;/passed_service-%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>30</maxHistory> <!-- File Save Date -->
+		</rollingPolicy>
+	</appender>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p [%t][%C{1}.%M:%L]-%m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.alive.networks" level="&LOG_LEVEL;">
+		<appender-ref ref="service"/>
+	</logger>
+</configuration>

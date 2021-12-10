@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alive.networks.db.mapper.ApiMapper">
+
+	<resultMap id="rVo" type="com.alive.networks.db.vo.ApiInfoVo" >
+		<!-- CODE -->
+		<result column="C_SID"                       jdbcType="VARCHAR" property="cSid"                     javaType="String"/>
+		<result column="C_LITERAL"                   jdbcType="VARCHAR" property="cLiteral"                 javaType="String"/>
+		<result column="C_CODE"                      jdbcType="VARCHAR" property="cCode"                    javaType="String"/>
+		<result column="C_KIND"                      jdbcType="VARCHAR" property="cKind"                    javaType="String"/>
+		<!-- USER -->
+		<result column="USER_SID"                    jdbcType="VARCHAR" property="userSid"                  javaType="String"/>
+		<result column="USER_ID"                     jdbcType="VARCHAR" property="userId"                   javaType="String"/>
+		<result column="USER_PW"                     jdbcType="VARCHAR" property="userPW"                   javaType="String"/>
+		<result column="USER_NAME"                   jdbcType="VARCHAR" property="userName"                 javaType="String"/>
+		<result column="USER_NICK"                   jdbcType="VARCHAR" property="userNick"                 javaType="String"/>
+		<result column="USER_PHONE"                  jdbcType="VARCHAR" property="userPhone"                javaType="String"/>
+		<result column="USER_BIRTH"                  jdbcType="VARCHAR" property="userBirth"                javaType="String"/>
+		<result column="USER_EMAIL_ID"               jdbcType="VARCHAR" property="userEmailId"              javaType="String"/>
+		<result column="USER_EMAIL_PF"               jdbcType="VARCHAR" property="userEmailPf"              javaType="String"/>
+		<result column="USER_GENDER"                 jdbcType="VARCHAR" property="userGender"               javaType="String"/>
+		<result column="USER_GRADE"                  jdbcType="VARCHAR" property="userGrade"                javaType="String"/>
+		<result column="USER_LOGIN_FAIL_CNT"         jdbcType="NUMERIC" property="userLoginFailCnt"         javaType="int"   />
+		<result column="USER_LOGIN_BLOCK_AT"         jdbcType="VARCHAR" property="userLoginBlockAt"         javaType="String"/>
+		<result column="USER_LAST_LOGIN_DATE"        jdbcType="VARCHAR" property="userLastLoginDate"        javaType="String"/>
+		<!-- BOARD -->
+		<result column="BOARD_SID"                   jdbcType="VARCHAR" property="boardSid"                 javaType="String"/>
+		<result column="BOARD_TITLE"                 jdbcType="VARCHAR" property="boardTitle"               javaType="String"/>
+		<result column="BOARD_CONTENT"               jdbcType="VARCHAR" property="boardContent"             javaType="String"/>
+		<result column="BOARD_KIND_CODE"             jdbcType="VARCHAR" property="boardKindCode"            javaType="String"/>
+		<result column="BOARD_TOP_VIEW_AT"           jdbcType="VARCHAR" property="boardTopViewAt"           javaType="String"/>
+		<result column="BOARD_LIKE_CNT"              jdbcType="NUMERIC" property="boardLikeCnt"             javaType="int"   />
+		<result column="BOARD_HATE_CNT"              jdbcType="NUMERIC" property="boardHateCnt"             javaType="int"   />
+		<result column="BOARD_VIEW_CNT"              jdbcType="NUMERIC" property="boardViewCnt"             javaType="int"   />
+
+		<result column="BOARD_REPLY_SID"             jdbcType="VARCHAR" property="boardReplySid"            javaType="String"/>
+		<result column="BOARD_REPLY_CONTENT"         jdbcType="VARCHAR" property="boardReplyContent"        javaType="String"/>
+		<result column="BOARD_REPLY_LIKE_CNT"        jdbcType="NUMERIC" property="boardReplyLikeCnt"        javaType="int"   />
+		<result column="BOARD_REPLY_HATE_CNT"        jdbcType="NUMERIC" property="boardReplyHateCnt"        javaType="int"   />
+
+		<result column="BOARD_RE_REPLY_SID"          jdbcType="VARCHAR" property="boardReReplySid"          javaType="String"/>
+		<result column="BOARD_RE_REPLY_CONTENT"      jdbcType="VARCHAR" property="boardReReplyContent"      javaType="String"/>
+		<result column="BOARD_RE_REPLY_LIKE_CNT"     jdbcType="NUMERIC" property="boardReReplyLikeCnt"      javaType="int"   />
+		<result column="BOARD_RE_REPLY_HATE_CNT"     jdbcType="NUMERIC" property="boardReReplyHateCnt"      javaType="int"   />
+
+		<result column="BOARD_EXTSN_SID"             jdbcType="VARCHAR" property="boardExtsnSid"            javaType="String"/>
+		<result column="BOARD_EXTSN_DIRECTORY_ROUTE" jdbcType="VARCHAR" property="boardExtsnDirectoryRoute" javaType="String"/>
+		<result column="BOARD_EXTSN_FILE_NAME"       jdbcType="VARCHAR" property="boardExtsnFileName"       javaType="String"/>
+		<result column="BOARD_EXTSN_FILE_EXTSN_NM"   jdbcType="VARCHAR" property="boardExtsnFileExtsnNm"    javaType="String"/>
+		<result column="BOARD_EXTSN_FILE_EXTSN_CD"   jdbcType="VARCHAR" property="boardExtsnFileExtsnCd"    javaType="String"/>
+		<!-- COMMON -->
+		<result column="USE_AT"                      jdbcType="VARCHAR" property="useAt"                    javaType="String"/>
+		<result column="DEL_YN"                      jdbcType="VARCHAR" property="delYn"                    javaType="String"/>
+		<result column="REG_DATE"                    jdbcType="VARCHAR" property="regDate"                  javaType="String"/>
+		<result column="REG_USER"                    jdbcType="VARCHAR" property="regUser"                  javaType="String"/>
+		<result column="UPT_DATE"                    jdbcType="VARCHAR" property="uptDate"                  javaType="String"/>
+		<result column="UPT_USER"                    jdbcType="VARCHAR" property="uptUser"                  javaType="String"/>
+		<result column="TOTAL_CNT"                   jdbcType="VARCHAR" property="totalCnt"                 javaType="String"/>
+
+	</resultMap>
+	<insert id="insertUserInfo" parameterType="com.alive.networks.db.vo.ApiInfoVo" statementType="PREPARED">
+		INSERT INTO Y_USER
+		( USER_SID
+		, USER_ID
+		, USER_PW
+		, USER_NAME
+		, USER_NICK
+		, USER_PHONE
+		, USER_BIRTH
+		, USER_EMAIL_ID
+		, USER_EMAIL_PF
+		, USER_GENDER
+		, USER_GRADE
+		)VALUES
+		( TO_CHAR(SYSDATE,'YYYYMMDDHHMISS')||LPAD(Y_USER_SID_SEQ.NEXTVAL,6,'0')	-- 가입시간 + 회원생성순번
+		, #{userId, javaType=String, jdbcType=VARCHAR}
+		, #{userPW, javaType=String, jdbcType=VARCHAR}
+		, #{userName, javaType=String, jdbcType=VARCHAR}
+		, #{userNick, javaType=String, jdbcType=VARCHAR}
+		, #{userPhone, javaType=String, jdbcType=VARCHAR}
+		, #{userBirth, javaType=String, jdbcType=VARCHAR}
+		, #{userEmailId, javaType=String, jdbcType=VARCHAR}
+		, #{userEmailPf, javaType=String, jdbcType=VARCHAR}
+		, #{userGender, javaType=String, jdbcType=VARCHAR}
+		, #{userGrade, javaType=String, jdbcType=VARCHAR}
+		);
+	</insert>
+	<select id="selectUserExistCheck" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT
+		NVL((SELECT USER_ID
+		       FROM Y_USER
+		      WHERE USER_ID = #{userId, javaType=String, jdbcType=VARCHAR}),'0')
+		AS USER_ID,
+		NVL((SELECT USER_NICK
+		       FROM Y_USER
+		      WHERE USER_NICK = #{userNick, javaType=String, jdbcType=VARCHAR}),'0')
+		AS USER_NICK,
+		NVL((SELECT USER_NAME
+		       FROM Y_USER
+		      WHERE USER_NAME = #{userName, javaType=String, jdbcType=VARCHAR}
+		        AND USER_BIRTH = #{userBirth, javaType=String, jdbcType=VARCHAR}
+		        AND USER_PHONE = #{userPhone, javaType=String, jdbcType=VARCHAR}),'0')
+		AS USER_NAME
+		FROM DUAL
+	</select>
+	<update id="updateUserInfo" parameterType="com.alive.networks.db.vo.ApiInfoVo" statementType="PREPARED">
+		UPDATE Y_USER
+		SET
+		<if test=' userNick != "" and userNick != null '>
+		  USER_NICK = #{userNick, javaType=String, jdbcType=VARCHAR}
+		</if>
+		<if test=' userPhone != "" and userPhone != null '>
+		, USER_PHONE = #{userPhone, javaType=String, jdbcType=VARCHAR}
+		</if>
+		<if test=' userBirth != "" and userBirth != null '>
+		, USER_BIRTH = #{userBirth, javaType=String, jdbcType=VARCHAR}
+		</if>
+		<if test=' userEmailId != "" and userEmailId != null '>
+		, USER_EMAIL_ID = #{userEmailId, javaType=String, jdbcType=VARCHAR}
+		, USER_EMAIL_PF = #{userEmailPf, javaType=String, jdbcType=VARCHAR}
+		</if>
+		<if test=' userGender != "" and userGender != null '>
+		, USER_GENDER = #{userGender, javaType=String, jdbcType=VARCHAR}
+		</if>
+		, UPT_DATE = TO_CHAR(SYSDATE,'YYYYMMDDHHMISS')
+		, UPT_USER = #{userId, javaType=String, jdbcType=VARCHAR}
+		WHERE USER_ID = #{userId, javaType=String, jdbcType=VARCHAR}
+	</update>
+	<select id="selectUserInfo" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT USER_SID
+		, USER_ID
+		<!--, USER_PW -->
+		, USER_NAME
+		, USER_NICK
+		, USER_PHONE
+		, USER_BIRTH
+		, USER_EMAIL_ID
+		, USER_EMAIL_PF
+		, USER_GENDER
+		, USER_GRADE
+		, USER_LOGIN_FAIL_CNT
+		, USER_LOGIN_BLOCK_AT
+		, USER_LAST_LOGIN_DATE
+		, USE_AT
+		, REG_DATE
+		, REG_USER
+		, UPT_DATE
+		, UPT_USER
+		FROM V_USER
+		WHERE 1=1
+		AND USER_ID = #{userId}
+	</select>
+	<insert id="insertBoardInfo" parameterType="com.alive.networks.db.vo.ApiInfoVo"  statementType="PREPARED">
+		INSERT INTO Y_BOARD
+		( BOARD_SID
+		, BOARD_TITLE
+		, BOARD_CONTENT
+		, BOARD_KIND_CODE
+		, REG_USER
+		, UPT_USER
+		)VALUES
+		( TO_CHAR(SYSDATE,'YYYYMMDDHHMISS')||LPAD(Y_BOARD_SID_SEQ.NEXTVAL,10,'0')
+		, #{boardTitle, javaType=String, jdbcType=VARCHAR}
+		, #{boardContent, javaType=String, jdbcType=VARCHAR}
+		, #{boardKindCode, javaType=String, jdbcType=VARCHAR}
+		, #{userId, javaType=String, jdbcType=VARCHAR}
+		, #{userId, javaType=String, jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="selectBoardList" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT BRD.BOARD_SID
+		, NVL((SELECT EXN.BOARD_EXTSN_DIRECTORY_ROUTE||EXN.BOARD_EXTSN_FILE_NAME||EXN.BOARD_EXTSN_FILE_EXTENSION
+		FROM Y_BOARD_EXTSN EXN
+		WHERE EXN.BOARD_SID = BRD.BOARD_SID
+		AND EXN.THUMB_AT = 'Y'
+		),'/default') AS BOARD_EXTSN_FILE_NAME
+		, BRD.BOARD_TITLE
+		, BRD.BOARD_CONTENT
+		, BRD.BOARD_KIND_CODE
+		, BRD.BOARD_TOP_VIEW_AT
+		, BRD.BOARD_LIKE_CNT
+		, BRD.BOARD_HATE_CNT
+		, BRD.BOARD_VIEW_CNT
+		, BRD.DEL_YN
+		, BRD.REG_DATE
+		, BRD.REG_USER
+		, BRD.UPT_DATE
+		, BRD.UPT_USER
+		, USR.USER_NICK
+		FROM Y_BOARD BRD, Y_USER USR
+		WHERE 1=1
+		AND BRD.DEL_YN = 'N'
+		AND USR.USER_ID = BRD.REG_USER
+		AND BRD.BOARD_KIND_CODE = #{boardKindCode, javaType=String, jdbcType=VARCHAR}
+		<if test=' boardSearchType == "10" and boardSearchType != null '>	<!-- 제목 -->
+		AND BRD.BOARD_TITLE LIKE '%'||#{boardSearchString, javaType=String, jdbcType=VARCHAR}||'%'
+		</if>
+		<if test=' boardSearchType == "11" and boardSearchType != null '>	<!-- 작성자 -->
+		AND USR.USER_NICK LIKE '%'||#{boardSearchString, javaType=String, jdbcType=VARCHAR}||'%'
+		</if>
+		<if test=' boardSearchType == "12" and boardSearchType != null '>	<!-- 내용 -->
+		AND BRD.BOARD_CONTENT LIKE '%'||#{boardSearchString, javaType=String, jdbcType=VARCHAR}||'%'
+		</if>
+		<if test=' boardSearchType == "13" and boardSearchType != null '>	<!-- 제목+내용 -->
+		AND (
+			BRD.BOARD_TITLE LIKE '%'||#{boardSearchString, javaType=String, jdbcType=VARCHAR}||'%' OR
+			BRD.BOARD_CONTENT LIKE '%'||#{boardSearchString, javaType=String, jdbcType=VARCHAR}||'%'
+		)
+		</if>
+		ORDER BY REG_DATE, UPT_DATE, BOARD_SID DESC
+	</select>
+	<select id="selectBoardDetailView" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT BRD.BOARD_SID
+		, BRD.BOARD_TITLE
+		, BRD.BOARD_CONTENT
+		, BRD.BOARD_KIND_CODE
+		, BRD.BOARD_TOP_VIEW_AT
+		, BRD.BOARD_LIKE_CNT
+		, BRD.BOARD_HATE_CNT
+		, BRD.BOARD_VIEW_CNT
+		, BRD.DEL_YN
+		, BRD.REG_DATE
+		, BRD.REG_USER
+		, BRD.UPT_DATE
+		, BRD.UPT_USER
+		, USR.USER_NICK
+		FROM Y_BOARD BRD, Y_USER USR
+		WHERE 1=1
+		AND BRD.DEL_YN = 'N'
+		AND USR.USER_ID = BRD.REG_USER
+		AND BRD.BOARD_SID = #{boardSid, javaType=String, jdbcType=VARCHAR}
+		AND ROWNUM = 1
+	</select>
+	<select id="selectBoardContentList" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT BOARD_EXTSN_SID
+		, BOARD_SID
+		, BOARD_EXTSN_DIRECTORY_ROUTE
+		, BOARD_EXTSN_FILE_NAME
+		, BOARD_EXTSN_FILE_EXTSN_NM
+		, BOARD_EXTSN_FILE_EXTSN_CD
+		, USE_AT
+		, REG_DATE
+		, REG_USER
+		, UPT_DATE
+		, UPT_USER
+		FROM Y_BOARD_EXTENSION
+		WHERE 1=1
+		AND BOARD_SID = #{boardSid, javaType=String, jdbcType=VARCHAR}
+		AND USE_AT = 'Y'
+	</select>
+	<select id="selectBoardReplyList" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT BRR.BOARD_REPLY_SID
+		, BRR.BOARD_SID
+		, BRR.BOARD_REPLY_CONTENT
+		, BRR.BOARD_REPLY_LIKE_CNT
+		, BRR.BOARD_REPLY_HATE_CNT
+		, BRR.DEL_YN
+		, BRR.REG_DATE
+		, BRR.REG_USER
+		, BRR.UPT_DATE
+		, BRR.UPT_USER
+		, USR.USER_NICK
+		FROM Y_BOARD_REPLY BRR, Y_USER USR
+		WHERE 1=1
+		AND BRR.REG_USER = USR.USER_ID
+		AND BRR.BOARD_SID = #{boardSid, javaType=String, jdbcType=VARCHAR}
+		AND BRR.DEL_YN = 'N'
+	</select>
+	<select id="selectBoardReReplyList" parameterType="com.alive.networks.db.vo.ApiInfoVo" resultMap="rVo" statementType="PREPARED" >
+		SELECT BRR.BOARD_RE_REPLY_SID
+		, BRR.BOARD_REPLY_SID
+		, BRR.BOARD_SID
+		, BRR.BOARD_RE_REPLY_CONTENT
+		, BRR.BOARD_RE_REPLY_LIKE_CNT
+		, BRR.BOARD_RE_REPLY_HATE_CNT
+		, BRR.DEL_YN
+		, BRR.REG_DATE
+		, BRR.REG_USER
+		, BRR.UPT_DATE
+		, BRR.UPT_USER
+		, USR.USER_NICK
+		FROM Y_BOARD_RE_REPLY BRR, Y_USER USR
+		WHERE 1=1
+		AND BRR.REG_USER = USR.USER_ID
+		AND BRR.BOARD_SID = #{boardSid, javaType=String, jdbcType=VARCHAR}
+		AND BRR.BOARD_REPLY_SID = #{boardReplySid, javaType=String, jdbcType=VARCHAR}
+		AND BRR.DEL_YN = 'N'
+	</select>
+	<update id="deleteUserInfo" parameterType="com.alive.networks.db.vo.ApiInfoVo" statementType="PREPARED">
+		UPDATE Y_USER
+		SET USE_AT = 'N'
+		, UPT_DATE = TO_CHAR(SYSDATE,'YYYYMMDDHHMISS')
+		, UPT_USER = #{userId, javaType=String, jdbcType=VARCHAR}
+		WHERE 1=1
+		AND USER_ID = #{userId, javaType=String, jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteUserInfoLog" parameterType="com.alive.networks.db.vo.ApiInfoVo" statementType="PREPARED">
+		DELETE Y_USER WHERE USER_ID = #{userId, javaType=String, jdbcType=VARCHAR}
+	</delete>
+</mapper>
+
